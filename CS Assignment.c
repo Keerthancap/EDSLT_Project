@@ -198,28 +198,28 @@ void traverseEmergencyTwice() {
 int main() {
     int choice;
     char temp[20];
+    
+    printf("\nCargo Drone Traffic Controller\n");
+    printf("1. Enqueue Delivery Request\n");
+    printf("2. Dispatch Drones (LIFO)\n");
+    printf("3. Log Delivery\n");
+    printf("4. Add Overloaded Drone\n");
+    printf("5. Move Drone to Serviced\n");
+    printf("6. Show Serviced Drones (Forward)\n");
+    printf("7. Show Serviced Drones (Backward)\n");
+    printf("8. Add Emergency Reroute Drone\n");
+    printf("9. Show Emergency Reroutes (2 Cycles)\n");
+    printf("10. Show Flight Log\n");
+    printf("0. Exit\n");
 
     while (1) {
-        printf("\nCargo Drone Traffic Controller\n");
-        printf("1. Enqueue Delivery Request\n");
-        printf("2. Dispatch Drones (LIFO)\n");
-        printf("3. Log Delivery\n");
-        printf("4. Add Overloaded Drone\n");
-        printf("5. Move Drone to Serviced\n");
-        printf("6. Show Serviced Drones (Forward)\n");
-        printf("7. Show Serviced Drones (Backward)\n");
-        printf("8. Add Emergency Reroute Drone\n");
-        printf("9. Show Emergency Reroutes (2 Cycles)\n");
-        printf("10. Show Flight Log\n");
-        printf("0. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
                 printf("Enter delivery item: ");
-                fgets(temp, sizeof(temp), stdin);
-                temp[strcspn(temp, "\n")] = '\0';
+                scanf("%s", temp);
                 enqueue(temp);
                 break;
 
@@ -240,24 +240,21 @@ int main() {
 
             case 3:
                 printf("Enter delivery log: ");
-                fgets(temp, sizeof(temp), stdin);
-                temp[strcspn(temp, "\n")] = '\0';
+                scanf("%s", temp);
                 logDelivery(temp);
                 printf("Delivery logged.\n");
                 break;
 
             case 4:
                 printf("Enter overloaded drone name: ");
-                fgets(temp, sizeof(temp), stdin);
-                temp[strcspn(temp, "\n")] = '\0';
+                scanf("%s", temp);
                 insertOverloaded(temp);
                 printf("Drone added to overloaded list.\n");
                 break;
 
             case 5:
                 printf("Enter drone name to service: ");
-                fgets(temp, sizeof(temp), stdin);
-                temp[strcspn(temp, "\n")] = '\0';
+                scanf("%s", temp);
                 moveToServiced(temp);
                 break;
 
@@ -271,8 +268,7 @@ int main() {
 
             case 8:
                 printf("Enter emergency drone name: ");
-                fgets(temp, sizeof(temp), stdin);
-                temp[strcspn(temp, "\n")] = '\0';
+                scanf("%s", temp);
                 insertEmergency(temp);
                 printf("Drone added to emergency reroute.\n");
                 break;
